@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Documentation: Quiz to ChatGPT Auto Helper</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-okaidia.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-text {
+            background: -webkit-linear-gradient(45deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .modal {
+            display: none; /* Hidden by default */
+        }
+        .code-button {
+            transition: all 0.2s;
+        }
+        .code-button:hover {
+            background-color: #eef2ff;
+            color: #4f46e5;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://i.imgur.com/802b03u.png" alt="Quiz Helper Logo" class="w-10 h-10 mr-3">
+                <div class="text-2xl font-bold gradient-text">Quiz Helper Project</div>
+            </div>
+            <div>
+                <a href="#overview" class="text-gray-600 hover:text-blue-500 mx-3">Overview</a>
+                <a href="#features" class="text-gray-600 hover:text-blue-500 mx-3">Features</a>
+                <a href="#architecture" class="text-gray-600 hover:text-blue-500 mx-3">Architecture</a>
+                <a href="#source-code" class="text-gray-600 hover:text-blue-500 mx-3">Source Code</a>
+                <a href="#cybersecurity" class="text-gray-600 hover:text-blue-500 mx-3">Cybersecurity</a>
+                <a href="#demo" class="text-gray-600 hover:text-blue-500 mx-3">Demo</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Project Overview -->
+        <section id="overview" class="my-16">
+            <div class="text-center">
+                <h1 class="text-5xl font-bold mb-4">Quiz to ChatGPT Auto Helper</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">An innovative browser extension designed to streamline the learning process by automating the transfer of quiz questions to ChatGPT for quick assistance.</p>
+            </div>
+            <div class="mt-12 grid md:grid-cols-2 gap-12 items-center">
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold mb-3">Project Goal</h3>
+                    <p class="text-gray-600">The primary goal of this project is to create a seamless and efficient tool for students. It eliminates the manual, and often restricted, process of copying questions from online quiz platforms. By automating question extraction, it allows students to focus on understanding the concepts rather than on cumbersome manual tasks.</p>
+                </div>
+                 <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold mb-3">My Aspirations</h3>
+                    <p class="text-gray-600">I developed this project to deepen my practical skills in web technologies and browser automation. It reflects my passion for creating solutions to real-world problems. I am eager to pursue a degree in Cybersecurity at the University of Notre Dame, Australia, to build upon this foundation and contribute to a safer digital world.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Features -->
+        <section id="features" class="my-16">
+            <h2 class="text-4xl font-bold text-center mb-12">Key Features</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg feature-card transition-all duration-300">
+                    <h4 class="text-xl font-semibold mb-2">Automated Question Detection</h4>
+                    <p>The extension intelligently identifies and extracts questions and options from quiz websites as soon as they appear on the screen.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg feature-card transition-all duration-300">
+                    <h4 class="text-xl font-semibold mb-2">Seamless ChatGPT Integration</h4>
+                    <p>Automatically opens, focuses, and pastes the extracted quiz content into a ChatGPT tab, ready for you to get explanations.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg feature-card transition-all duration-300">
+                    <h4 class="text-xl font-semibold mb-2">Copy-Paste Restriction Bypass</h4>
+                    <p>Successfully works on websites like quiz.com that disable right-click and copy functionalities, showcasing a practical application of web automation.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Architecture -->
+        <section id="architecture" class="my-16">
+            <h2 class="text-4xl font-bold text-center mb-12">Technical Architecture</h2>
+            <div class="bg-white p-8 rounded-lg shadow-xl">
+                 <p class="text-lg text-gray-700 mb-6">This Chrome extension is built on a robust, event-driven architecture using JavaScript. It consists of several components that work in harmony to provide a smooth user experience.</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-2xl font-semibold mb-3">Core Components</h4>
+                        <ul class="list-disc list-inside text-gray-600 space-y-2">
+                            <li><strong>Manifest.json:</strong> The entry point, defining permissions and scripts.</li>
+                            <li><strong>Background Script (background.js):</strong> The central coordinator for communication.</li>
+                            <li><strong>Quiz Extractor (quiz-extractor.js):</strong> A content script to detect and extract questions.</li>
+                            <li><strong>ChatGPT Handler (chatgpt-handler.js):</strong> A content script to inject questions into ChatGPT.</li>
+                            <li><strong>Popup (popup.html & popup.js):</strong> A simple UI for status monitoring.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-100 p-6 rounded-lg">
+                        <h4 class="text-2xl font-semibold mb-3">How It Works</h4>
+                        <ol class="list-decimal list-inside text-gray-600 space-y-2">
+                            <li>The <strong>Quiz Extractor</strong> script detects a new question on the quiz page.</li>
+                            <li>It sends the question to the <strong>Background Script</strong>.</li>
+                            <li>The <strong>Background Script</strong> forwards the question to the ChatGPT tab.</li>
+                            <li>The <strong>ChatGPT Handler</strong> receives and pastes the question.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Source Code Section -->
+        <section id="source-code" class="my-16">
+            <h2 class="text-4xl font-bold text-center mb-12">Explore the Source Code</h2>
+            <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-8">
+                Transparency is key to understanding the project's mechanics and security. Click on the files below to view the actual code that powers this extension.
+            </p>
+            <div class="bg-white p-8 rounded-lg shadow-xl">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 text-center">
+                    <button onclick="openModal('manifestModal')" class="code-button font-medium py-2 px-4 rounded-lg border">manifest.json</button>
+                    <button onclick="openModal('backgroundModal')" class="code-button font-medium py-2 px-4 rounded-lg border">background.js</button>
+                    <button onclick="openModal('quizExtractorModal')" class="code-button font-medium py-2 px-4 rounded-lg border">quiz-extractor.js</button>
+                    <button onclick="openModal('chatgptHandlerModal')" class="code-button font-medium py-2 px-4 rounded-lg border">chatgpt-handler.js</button>
+                    <button onclick="openModal('popupJsModal')" class="code-button font-medium py-2 px-4 rounded-lg border">popup.js</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo Video -->
+        <section id="demo" class="my-16">
+            <h2 class="text-4xl font-bold text-center mb-12">Live Demo</h2>
+            <div class="bg-white p-8 rounded-lg shadow-xl flex justify-center">
+                 <img src="https://i.imgur.com/O6CmrLd.gif" alt="Project Demo GIF" class="rounded-lg shadow-lg" style="max-width: 750px; height: auto;">
+            </div>
+        </section>
+
+        <!-- Cybersecurity Link -->
+        <section id="cybersecurity" class="my-16">
+             <h2 class="text-4xl font-bold text-center mb-12">Relevance to Cybersecurity</h2>
+             <div class="bg-white p-8 rounded-lg shadow-xl">
+                 <p class="text-lg text-gray-700">While this is a productivity tool, its development involved principles relevant to the field of cybersecurity, which I am passionate about pursuing at the University of Notre Dame, Australia.</p>
+                 <div class="mt-6 grid md:grid-cols-2 gap-8">
+                     <div>
+                         <h4 class="font-semibold text-xl mb-2">Host Permissions & Sandboxing</h4>
+                         <p>The extension operates under a strict permission model defined in `manifest.json`. It only requests access to the specific websites it needs to function. This principle of least privilege is fundamental in cybersecurity to minimize attack surfaces.</p>
+                     </div>
+                     <div>
+                         <h4 class="font-semibold text-xl mb-2">Content Scripts and Web Security</h4>
+                         <p>Understanding how content scripts interact with web pages provides insight into cross-site scripting (XSS) and how to prevent it. This project required careful handling of data being passed between different web contexts, a core concept in web application security.</p>
+                     </div>
+                 </div>
+             </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white mt-16">
+        <div class="container mx-auto px-6 py-4 text-center text-gray-600">
+            <p>&copy; 2024 - Student Project for University Application.</p>
+        </div>
+    </footer>
+
+    <!-- Modals for Source Code -->
+    <div id="manifestModal" class="modal fixed inset-0 bg-gray-900 bg-opacity-75 z-50 flex items-center justify-center">
+        <div class="bg-gray-800 text-white rounded-lg shadow-2xl w-11/12 md:w-3/4 max-h-screen overflow-hidden flex flex-col">
+            <div class="p-4 flex justify-between items-center border-b border-gray-700">
+                <h3 class="text-xl font-bold">manifest.json</h3>
+                <button onclick="closeModal('manifestModal')" class="text-2xl">&times;</button>
+            </div>
+            <div class="p-4 overflow-y-auto">
+                <pre><code class="language-json">
+{
+  "manifest_version": 3,
+  "name": "Quiz to ChatGPT Auto Helper",
+  "version": "1.0",
+  "description": "Automatically extract quiz questions and send them to ChatGPT",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://quiz.com/*",
+    "*://chatgpt.com/*",
+    "*://chat.openai.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://quiz.com/*"],
+      "js": ["quiz-extractor.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["*://chatgpt.com/*", "*://chat.openai.com/*"],
+      "js": ["chatgpt-handler.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Quiz Helper"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
+                </code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <div id="backgroundModal" class="modal fixed inset-0 bg-gray-900 bg-opacity-75 z-50 flex items-center justify-center">
+        <div class="bg-gray-800 text-white rounded-lg shadow-2xl w-11/12 md:w-3/4 max-h-screen overflow-hidden flex flex-col">
+            <div class="p-4 flex justify-between items-center border-b border-gray-700">
+                <h3 class="text-xl font-bold">background.js</h3>
+                <button onclick="closeModal('backgroundModal')" class="text-2xl">&times;</button>
+            </div>
+            <div class="p-4 overflow-y-auto">
+                <pre><code class="language-js">
+// SIMPLIFIED: Background script focused on reliable message routing between tabs
+let chatGptTabId = null;
+let quizTabId = null;
+let chatGptReady = false;
+let pendingMessages = [];
+
+// Fast tab lookup cache
+let tabCache = {
+  lastUpdate: 0,
+  chatGptTabs: [],
+  updateInterval: 2000
+};
+
+// Update ChatGPT tab cache
+const updateChatGptTabCache = async () => {
+  const now = Date.now();
+  if (now - tabCache.lastUpdate > tabCache.updateInterval) {
+    try {
+      tabCache.chatGptTabs = await chrome.tabs.query({
+        url: ["*://chatgpt.com/*", "*://chat.openai.com/*"]
+      });
+      tabCache.lastUpdate = now;
+    } catch (error) { console.error('Error updating tab cache:', error); }
+  }
+  return tabCache.chatGptTabs;
+};
+
+// Message handler
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  switch (message.type) {
+    case 'REGISTER_QUIZ_TAB':
+      quizTabId = sender.tab.id;
+      sendResponse({ success: true });
+      break;
+    case 'REGISTER_CHATGPT_TAB':
+      chatGptTabId = sender.tab.id;
+      chatGptReady = true;
+      if (pendingMessages.length > 0) {
+        pendingMessages.forEach(msg => handleNewQuestion(msg.content));
+        pendingMessages = [];
+      }
+      sendResponse({ success: true });
+      break;
+    case 'NEW_QUESTION_EXTRACTED':
+      handleNewQuestion(message.content);
+      sendResponse({ success: true });
+      break;
+    case 'GET_STATUS':
+      sendResponse({ hasQuizTab: !!quizTabId, hasChatGptTab: !!chatGptTabId && chatGptReady });
+      break;
+  }
+  return true;
+});
+
+async function handleNewQuestion(questionContent) {
+  try {
+    if (!chatGptTabId || !chatGptReady) {
+      await ensureChatGptTab();
+    }
+    if (chatGptTabId) {
+      chrome.tabs.sendMessage(chatGptTabId, {
+        type: 'PASTE_AND_SUBMIT',
+        content: questionContent
+      });
+    } else {
+      pendingMessages.push({ content: questionContent });
+    }
+  } catch (error) { console.error('Error in handleNewQuestion:', error); }
+}
+
+async function ensureChatGptTab() {
+  try {
+    const tabs = await updateChatGptTabCache();
+    if (tabs.length > 0) {
+      chatGptTabId = tabs[0].id;
+      return;
+    }
+    const newTab = await chrome.tabs.create({ url: 'https://chatgpt.com/', active: true });
+    chatGptTabId = newTab.id;
+  } catch (error) { console.error('Error in ensureChatGptTab:', error); }
+}
+
+chrome.tabs.onRemoved.addListener((tabId) => {
+  if (tabId === chatGptTabId) {
+    chatGptTabId = null;
+    chatGptReady = false;
+  }
+  if (tabId === quizTabId) {
+    quizTabId = null;
+  }
+});
+                </code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <div id="quizExtractorModal" class="modal fixed inset-0 bg-gray-900 bg-opacity-75 z-50 flex items-center justify-center">
+         <div class="bg-gray-800 text-white rounded-lg shadow-2xl w-11/12 md:w-3/4 max-h-screen overflow-hidden flex flex-col">
+            <div class="p-4 flex justify-between items-center border-b border-gray-700">
+                <h3 class="text-xl font-bold">quiz-extractor.js</h3>
+                <button onclick="closeModal('quizExtractorModal')" class="text-2xl">&times;</button>
+            </div>
+            <div class="p-4 overflow-y-auto">
+                <pre><code class="language-js">
+const createQuizExtractor = () => {
+  let isProcessing = false;
+  let questionHistory = new Map();
+  const COOLDOWN = 3000;
+
+  chrome.runtime.sendMessage({ type: 'REGISTER_QUIZ_TAB' });
+
+  const QUESTION_SELECTORS = [
+    '[data-cy="question-title"]', '.question-text', '.quiz-question', 
+    '.question-title', '.prompt-text'
+  ];
+  const OPTION_SELECTORS = [
+    '[data-cy="answer-choice"]', '[data-testid*="answer"]', '.answer-choice'
+  ];
+
+  const cleanText = (text) => text ? text.trim().replace(/\s+/g, ' ') : '';
+  const isValidQuestion = (text) => text && text.length > 5;
+  
+  const createQuestionHash = (question, options) => {
+    return (question + options.join('')).toLowerCase().replace(/\s+/g, '');
+  };
+
+  const isDuplicateQuestion = (question, options) => {
+    const now = Date.now();
+    const hash = createQuestionHash(question, options);
+    if (questionHistory.has(hash) && (now - questionHistory.get(hash) < COOLDOWN)) {
+      return true;
+    }
+    questionHistory.set(hash, now);
+    return false;
+  };
+
+  const findElementText = (selectors) => {
+    for (const selector of selectors) {
+      const element = document.querySelector(selector);
+      if (element && element.offsetParent !== null) {
+        const text = cleanText(element.textContent);
+        if (isValidQuestion(text)) return text;
+      }
+    }
+    return null;
+  };
+
+  const findMultipleElementsText = (selectors) => {
+    const results = new Set();
+    for (const selector of selectors) {
+      document.querySelectorAll(selector).forEach(el => {
+        if (el.offsetParent !== null) {
+          const text = cleanText(el.textContent);
+          if (text) results.add(text);
+        }
+      });
+    }
+    return Array.from(results);
+  };
+  
+  const extractQuizContent = async () => {
+    await new Promise(resolve => setTimeout(resolve, 500));
+    const question = findElementText(QUESTION_SELECTORS);
+    if (!question) return null;
+    const options = findMultipleElementsText(OPTION_SELECTORS);
+    return { question, options };
+  };
+
+  const sendToGPT = async (content) => {
+    if (isProcessing || isDuplicateQuestion(content.question, content.options)) return;
+    isProcessing = true;
+    
+    let formatted = `Q: ${content.question}`;
+    if(content.options.length > 0) {
+        formatted += '\nOptions:\n' + content.options.map((opt, i) => `${String.fromCharCode(65 + i)}. ${opt}`).join('\n');
+    }
+
+    chrome.runtime.sendMessage({
+      type: 'NEW_QUESTION_EXTRACTED',
+      content: formatted
+    });
+    
+    setTimeout(() => { isProcessing = false; }, COOLDOWN);
+  };
+  
+  const observer = new MutationObserver(() => {
+    extractQuizContent().then(content => {
+      if (content) sendToGPT(content);
+    });
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+};
+
+createQuizExtractor();
+                </code></pre>
+            </div>
+        </div>
+    </div>
+    
+    <div id="chatgptHandlerModal" class="modal fixed inset-0 bg-gray-900 bg-opacity-75 z-50 flex items-center justify-center">
+         <div class="bg-gray-800 text-white rounded-lg shadow-2xl w-11/12 md:w-3/4 max-h-screen overflow-hidden flex flex-col">
+            <div class="p-4 flex justify-between items-center border-b border-gray-700">
+                <h3 class="text-xl font-bold">chatgpt-handler.js</h3>
+                <button onclick="closeModal('chatgptHandlerModal')" class="text-2xl">&times;</button>
+            </div>
+            <div class="p-4 overflow-y-auto">
+                <pre><code class="language-js">
+chrome.runtime.sendMessage({ type: 'REGISTER_CHATGPT_TAB' });
+
+let isProcessing = false;
+
+const findInputField = async () => {
+    const selectors = ['#prompt-textarea', 'textarea[data-id="root"]'];
+    for (let i = 0; i < 10; i++) {
+        for (const selector of selectors) {
+            const element = document.querySelector(selector);
+            if (element) return element;
+        }
+        await new Promise(resolve => setTimeout(resolve, 500));
+    }
+    return null;
+};
+
+const findSendButton = async () => {
+    const selectors = ['button[data-testid="send-button"]', 'button[class*="send-button"]'];
+     for (let i = 0; i < 10; i++) {
+        for (const selector of selectors) {
+            const element = document.querySelector(selector);
+            if (element && !element.disabled) return element;
+        }
+        await new Promise(resolve => setTimeout(resolve, 500));
+    }
+    return null;
+};
+
+const insertText = async (element, text) => {
+    element.focus();
+    element.value = text;
+    element.dispatchEvent(new Event('input', { bubbles: true }));
+};
+
+const pasteAndSubmit = async (content) => {
+    if (isProcessing) return;
+    isProcessing = true;
+
+    try {
+        const inputField = await findInputField();
+        if (!inputField) throw new Error('Input field not found');
+
+        await insertText(inputField, content);
+        
+        await new Promise(resolve => setTimeout(resolve, 200));
+
+        const sendButton = await findSendButton();
+        if (!sendButton) throw new Error('Send button not found');
+        
+        sendButton.click();
+    } catch (error) {
+        console.error("ChatGPT handler failed:", error);
+        // Fallback to clipboard
+        navigator.clipboard.writeText(content).then(() => {
+            alert('Could not auto-send. Question copied to clipboard! Please paste it manually.');
+        });
+    } finally {
+        isProcessing = false;
+    }
+};
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.type === 'PASTE_AND_SUBMIT') {
+    pasteAndSubmit(message.content)
+      .then(() => sendResponse({ success: true }))
+      .catch(err => sendResponse({ success: false, error: err.message }));
+  }
+  return true;
+});
+                </code></pre>
+            </div>
+        </div>
+    </div>
+
+    <div id="popupJsModal" class="modal fixed inset-0 bg-gray-900 bg-opacity-75 z-50 flex items-center justify-center">
+         <div class="bg-gray-800 text-white rounded-lg shadow-2xl w-11/12 md:w-3/4 max-h-screen overflow-hidden flex flex-col">
+            <div class="p-4 flex justify-between items-center border-b border-gray-700">
+                <h3 class="text-xl font-bold">popup.js</h3>
+                <button onclick="closeModal('popupJsModal')" class="text-2xl">&times;</button>
+            </div>
+            <div class="p-4 overflow-y-auto">
+                <pre><code class="language-js">
+document.addEventListener('DOMContentLoaded', async () => {
+  const quizStatus = document.getElementById('quiz-status');
+  const chatgptStatus = document.getElementById('chatgpt-status');
+  const quizText = document.getElementById('quiz-text');
+  const chatgptText = document.getElementById('chatgpt-text');
+
+  const updateStatus = (status) => {
+    if (status.hasQuizTab) {
+      quizStatus.className = 'status active';
+      quizText.textContent = 'Quiz Tab: Active';
+    } else {
+      quizStatus.className = 'status inactive';
+      quizText.textContent = 'Quiz Tab: Not Active';
+    }
+
+    if (status.hasChatGptTab) {
+      chatgptStatus.className = 'status active';
+      chatgptText.textContent = 'ChatGPT Tab: Ready';
+    } else {
+      chatgptStatus.className = 'status inactive';
+      chatgptText.textContent = 'ChatGPT Tab: Not Found';
+    }
+  };
+
+  const refreshStatus = async () => {
+    try {
+      const response = await chrome.runtime.sendMessage({ type: 'GET_STATUS' });
+      updateStatus(response);
+    } catch (error) {
+      console.error('Error getting status:', error);
+      updateStatus({ hasQuizTab: false, hasChatGptTab: false });
+    }
+  };
+
+  setInterval(refreshStatus, 2000);
+  refreshStatus();
+});
+                </code></pre>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/components/prism-javascript.min.js"></script>
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Ensure all modals are hidden on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.modal').forEach(function(modal) {
+                modal.style.display = 'none';
+            });
+        });
+
+        // Close modal if escape key is pressed
+        window.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.style.display = 'none';
+                });
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+
+</body>
+</html>
